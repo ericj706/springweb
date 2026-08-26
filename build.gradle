@@ -18,9 +18,12 @@ repositories {
 }
 
 dependencies {
+	// 의존성(dependences){ } 안에 프로젝트내 추가할 라이브러리 코드 --> 자동으로 라이브러리 설치
+	// springboot
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// mysql
+  	runtimeOnly 'com.mysql:mysql-connector-j'
+
 }
 
 tasks.named('test') {

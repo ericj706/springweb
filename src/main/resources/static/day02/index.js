@@ -1,4 +1,4 @@
-console.log("열람");
+console.log( "INDEX.JS 열림" );
 
 // [1] 전체조회 , function 함수명( 매개변수명 ){ } 
 async function boardFindAll( ){ console.log( "boardFindAall 열림");
@@ -16,7 +16,8 @@ async function boardFindAll( ){ console.log( "boardFindAall 열림");
             const 게시물객체 = 게시물리스트[ index ]; 
             // `백틱이란? 문자열과 문자열 사이에 ${} 이용하여 변수 대입가능
             html += `<tr>
-                    <td> ${ 게시물객체.no } </td> <td> ${ 게시물객체.writer } </td> 
+                    <td> ${ 게시물객체.no } </td> 
+                    <td> ${ 게시물객체.writer } </td> 
                     <td> ${ 게시물객체.content } </td> 
                     <td> 
                         <button onclick="boardUpdate(${ 게시물객체.no })">수정</button> 
@@ -29,7 +30,6 @@ async function boardFindAll( ){ console.log( "boardFindAall 열림");
 } // f end 
 boardFindAll(); // * HTML(JS포함) 열릴 때 최초1번실행
 
-
 // [2] 등록
 async function boardSave(){ // 동기화함수 async
     // 1. 입력받은 값져오기 , .value : 입력상자에 입력된 값 반환 속성
@@ -37,7 +37,7 @@ async function boardSave(){ // 동기화함수 async
     const writer = document.querySelector('.writer').value;
     // 2. 저장: axios 이용하여 백엔드에게 저장 요청하고 응답받기 
     // await axios.http메소드( "주소" ) , 도메인 생략가능 ,
-    const response = await axios.post( `/board/save?content=${ content }&writer=${ writer }` );
+    const response = await axios.post( `http://127.0.0.1:8080/board/save?content=${ content }&writer=${ writer }` );
     // 3. 결과출력 
     if( response.data == true ){ 
         alert('저장 성공'); 
@@ -46,13 +46,12 @@ async function boardSave(){ // 동기화함수 async
     else{ alert('저장 실패'); }
 }// class end 
 
-
 // [3] 수정
 async function boardUpdate( no ){
     // 1. 수정할 내용 입력받기 prompt
     const content = prompt('수정할 내용: ');
     // 2. 수정처리 : axios 이용하여 백엔드에게 수정 요청/응답
-    const response = await axios.put( `/board/update?no=${ no }&content=${ content }`);
+    const response = await axios.put( `http://127.0.0.1:8080/board/update?no=${ no }&content=${ content }`);
     // 3. 결과
     if( response.data == true ){
         alert('수정 성공');
@@ -60,12 +59,11 @@ async function boardUpdate( no ){
     }else{ alert('수정 실패'); }
 }
 
- 	
 // [4] 삭제
 async function boardDelete( no ){ // async( axios동기화 )
     // no : 삭제할 게시물번호 / 클릭한 게시물번호
     // 1. 삭제처리 : axios 이용하여 백엔드에게 삭제 요청/응답
-    const response = await axios.delete( `/board/delete?no=${ no }` );
+    const response = await axios.delete( `http://127.0.0.1:8080/board/delete?no=${ no }` );
     // 2. 결과
     if( response.data == true ){
         alert('삭제 성공');

@@ -11,19 +11,19 @@ import lombok.ToString;
 
 public class Exam2 {
     public static void main(String[] args) {
-        Student s1 = new Student();  // 1.@NoArgsConstructor
-        Student s2 = new Student("유재석",100,90);   // 2.@AllArgsConstructor
-        s1.setKor( 100 );   // 3. @Setter
-        System.out.println(s2.getKor());    // 4. @Getter
-        System.out.println(s2.toString());  // 5. @toString
-        // 6. 빌더 패턴
-        Student s3 = Student.builder()
-                            .kor(100)
-                            .name("강호동")
-                            .build();
-        // 즉) new 생성자명 ( ); vs 클래스명.builder().build();
+        Student s1 = new Student(); //1. @NoArgsConstructor 
+        Student s2 = new Student( "유재석", 100, 90); // 2.@AllArgsConstructor
+        s1.setKor( 100 ); // 3 .@Setter 
+        System.out.println( s2.getKor() ); // 4 .@Getter
+        System.out.println( s2.toString() );// 5 .@ToString
+        // 6. 빌더 패턴 이용한 객체 생성 , 장점:순서무관,선택적대입,유연한객체생성
+        Student s3 = Student.builder() // - 빌더패턴 시작
+                    .kor( 100 )     // 멤버변수 대입
+                    .name("강호동")
+                    .build(); // - 빌더패턴 끝
+        System.out.println( s3 );
+        // 즉] new 생성자명( ); [VS] 클래스명.builder().build();
         // 클래스명.메소드명(): 메소드가 static 이면 객체 필요없다
-
     }
 }//ce
 

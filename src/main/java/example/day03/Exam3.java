@@ -19,6 +19,19 @@ class SampleController1{
 }
 
 // [2] 전통 방식의 싱글톤 생성, dao 인스턴스 생성 불가능
+class SampleDao2{ 
+    private SampleDao2(){}
+    private static final SampleDao2 instance = new SampleDao2();
+    public static SampleDao2 getInstance(){ return instance; }
+    public void method(){}
+}
+class SampleController2{
+    SampleDao2 dao2 = SampleDao2.getInstance();
+    void method(){
+        // 2. 다른 클래스내 메소드 호출하는방법
+        dao2.method();
+    }
+}
 
 
 // [3] 스프링 IOC/DI

@@ -47,7 +47,7 @@ class TestClass{
 
 class SuperClass{ void method1(){} } // - 상위클래스
 class SubClass extends SuperClass{ // - 하위클래스
-    @Override // [1] 어노테이션: (재정의) 컴파일/실행중 해당 메소드 사용하는 방법/주석 명시
+    @Override // [1] 오버라이드: (재정의) 컴파일/실행중 해당 메소드 사용하는 방법/주석 명시
     void method1() {   super.method1();  }
     @Deprecated // [2] 어노테이션: (더 이상 사용을 권장안함)
     void method2( ){ }

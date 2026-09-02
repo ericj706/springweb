@@ -1,4 +1,4 @@
-package example.day04;
+package example.Practice2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,6 +7,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AppStart {
     public static void main(String[] args) {
         SpringApplication.run(AppStart.class);  // 클래스명.class 리플렉션
-        
     }
 }

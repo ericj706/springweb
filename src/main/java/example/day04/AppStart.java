@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AppStart {
     public static void main(String[] args) {
         SpringApplication.run(AppStart.class);  // 클래스명.class 리플렉션
-        // 즉) SpringBoot에 어노테이션을 포함한 정보 실행
-        
+
     }
 }

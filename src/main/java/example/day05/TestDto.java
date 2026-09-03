@@ -26,8 +26,10 @@ public class TestDto extends BaseTime{  // 서로 계층간 이동객체( Contro
                 .name(this.name)
                 .descri(this.descri)
                 .price(this.price)
+                .no(this.no)
                 .build();
-    }   
+                
+    }
     public static TestDto from(TestEntity testEntity){
         return TestDto.builder()
                 .name(testEntity.getName())
@@ -35,6 +37,7 @@ public class TestDto extends BaseTime{  // 서로 계층간 이동객체( Contro
                 .price(testEntity.getPrice())
                 .createDate(testEntity.getCreateDate())
                 .updateTime(testEntity.getUpdateDate())
+                .no(testEntity.getNo())
                 .build();
     }
 

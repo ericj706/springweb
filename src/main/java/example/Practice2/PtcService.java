@@ -24,8 +24,16 @@ public class PtcService {
         return ptcRepository2.findAll();
     }
     // [3] 개별조회
-    public Optional<PtcEntity> testDetail(int no) {
-        return ptcRepository2.findById(no);
+    // public Optional<PtcEntity> testDetail(int no) {
+    //     return ptcRepository2.findById(no);
+    // }
+    public PtcEntity testDetail( int no ){
+    Optional<PtcEntity> optional = ptcRepository2.findById( no );
+    if( optional.isPresent() ){
+        PtcEntity entity = optional.get(); 
+        return entity;
+    }
+    return null; // 객체가 없다는 뜻이 null
     }
 
     // [4] 삭제

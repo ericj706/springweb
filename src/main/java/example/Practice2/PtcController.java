@@ -39,8 +39,8 @@ public class PtcController {
     
     // [3] 개별조회
     @GetMapping("/detail")
-    public Optional<PtcEntity> testDetail(@RequestParam(name = "no") int no) {
-        return ptcService.testDetail(no);
+    public PtcEntity testDetail( @RequestParam( name = "no") int no ){
+        return ptcService.testDetail( no );
     }
     
     

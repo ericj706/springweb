@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository 
-public interface PtcRepository2
+public interface PtcRepository
     extends JpaRepository< PtcEntity , Integer >{
     
 }

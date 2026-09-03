@@ -11,24 +11,24 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class PtcService {
-    private final PtcRepository2 ptcRepository2;
+    private final PtcRepository ptcRepository;
     
     // [1] 저장
     public boolean testWrite(PtcEntity entity){
-        PtcEntity saved = ptcRepository2.save(entity);
+        PtcEntity saved = ptcRepository.save(entity);
         if(saved.getNo()>=1) return true;
         return false;
     }
     // [2] 전체조회
     public List<PtcEntity> testPrint(){
-        return ptcRepository2.findAll();
+        return ptcRepository.findAll();
     }
     // [3] 개별조회
     // public Optional<PtcEntity> testDetail(int no) {
     //     return ptcRepository2.findById(no);
     // }
     public PtcEntity testDetail( int no ){
-    Optional<PtcEntity> optional = ptcRepository2.findById( no );
+    Optional<PtcEntity> optional = ptcRepository.findById( no );
     if( optional.isPresent() ){
         PtcEntity entity = optional.get(); 
         return entity;
@@ -37,14 +37,18 @@ public class PtcService {
     }
 
     // [4] 삭제
-    public boolean ptcDelete(int no){
-        ptcRepository2.deleteById(no);
-        return true;
+    public boolean testDelete( int no ){
+        Optional<PtcEntity> optional = ptcRepository.findById( no );
+        if( optional.isPresent() ){
+            ptcRepository.delete( optional.get() );
+            return true;
+        }
+        return false; 
     }
     // [5] 수정
     @Transactional
-    public boolean ptcUpdate(PtcEntity entity){
-        Optional<PtcEntity> optional = ptcRepository2.findById(entity.getNo());
+    public boolean testUpdate(PtcEntity entity){
+        Optional<PtcEntity> optional = ptcRepository.findById(entity.getNo());
         if(optional.isPresent()){   // 객체가 있으면 true, 없으면 false
             PtcEntity savedEntity = optional.get(); // 래핑된 Optional에서 엔티티 꺼내기
             savedEntity.setContent(entity.getContent());

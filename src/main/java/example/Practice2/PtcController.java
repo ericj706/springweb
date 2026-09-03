@@ -47,12 +47,12 @@ public class PtcController {
     // [4] 삭제
     @DeleteMapping("")
     public boolean testDelete(@RequestParam(name = "no") int no){
-        return ptcService.ptcDelete(no);
+        return ptcService.testDelete(no);
     }
     // [5] 수정
     @PutMapping("")
     public boolean testUpdate(@RequestBody PtcEntity entity) {
-        return ptcService.ptcUpdate(entity);
+        return ptcService.testUpdate(entity);
     }
     
 

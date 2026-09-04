@@ -1,26 +1,26 @@
-package example.Practice3;
+package example.mini;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter // 자식클래스들이 호출 할 수 있도록
+@Getter
 @NoArgsConstructor
-@MappedSuperclass // 상속용도의 매핑 클래스 지정
-@EntityListeners( AuditingEntityListener.class ) // JPA Auditing구현체
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public class BaseTime {
     @CreatedDate
     private LocalDateTime createDate;
     @LastModifiedDate
     private LocalDateTime updateDate;
+    
 }
-// 로그( 모든 이벤트/행위 ) 관례적으로 남긴다.

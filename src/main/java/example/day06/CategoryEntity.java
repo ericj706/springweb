@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity@Table(name = "category")
 @NoArgsConstructor@AllArgsConstructor@Builder@Data
@@ -19,7 +20,9 @@ public class CategoryEntity {
     private Integer cno;
     private String cname;
     // 양방향 참조
-    @OneToMany
+    @OneToMany( mappedBy = "categoryEntity") // 하나가 다수 참조
+    @ToString.Exclude
+    @Builder.Default    
     private List<BoardEntity> boardList = new ArrayList<>();
 
 

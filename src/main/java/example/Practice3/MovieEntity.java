@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,8 +18,8 @@ import lombok.ToString;
 
 @Entity
 @Table(name= "movie")
-@Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
-public class MovieEntity {
+@Getter @Setter @ToString @Builder @AllArgsConstructor @NoArgsConstructor
+public class MovieEntity extends BaseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer movieId;
@@ -27,7 +28,7 @@ public class MovieEntity {
     private String title;
 
     @Column(length = 100) // varchar(100)
-    private String direction;
+    private String director;
     private LocalDate releasDate;
     private Double rating;
 

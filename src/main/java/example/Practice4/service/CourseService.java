@@ -39,7 +39,6 @@ public class CourseService {
             });
             courseDtos.add(courseDto); // 2-3 변환된 dto 리스트에 저장
         });
-        // 3.
         return courseDtos;
     }
 }

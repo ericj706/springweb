@@ -12,7 +12,7 @@ import example.Practice4.model.dto.EnrollDto;
 import example.Practice4.service.EnrollService;
 
 @RestController
-@RequestMapping ("api/enroll")
+@RequestMapping ("/api/enroll")
 public class EnrollController {
     @Autowired private EnrollService enrollService;
     

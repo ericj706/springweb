@@ -14,7 +14,7 @@ import example.Practice4.model.dto.StudentDto;
 import example.Practice4.service.StudentService;
 
 @RestController 
-@RequestMapping ("api/student")
+@RequestMapping ("/api/student")
 public class StudentController {
     @Autowired private StudentService studentService;
 

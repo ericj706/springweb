@@ -1,4 +1,4 @@
-package example.Practice4;
+package example.Practice4.model.entity;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package example.Practice4;
+package example.Practice4.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package example.Practice4;
+package example.Practice4.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity 
 @Table (name = "enroll")
 @Builder @Data  @AllArgsConstructor @NoArgsConstructor 
-public class EnrollEntity {
+public class EnrollEntity extends BaseTime{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer enrollId;

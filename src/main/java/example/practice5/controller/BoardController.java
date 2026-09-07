@@ -30,9 +30,9 @@ public class BoardController {
     }
 
     // 게시글 삭제
-    @DeleteMapping ("")
+    @DeleteMapping ("/{board_id}/{password}")
     public boolean 게시글삭제(
-        @PathVariable (name = "boardId") Integer boardId,
+        @PathVariable (name = "board_id") Integer boardId,
         @PathVariable (name = "password") String password
     ){
         return boardService.게시글삭제(boardId,password);

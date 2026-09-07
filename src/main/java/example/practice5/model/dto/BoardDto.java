@@ -3,7 +3,6 @@ package example.practice5.model.dto;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import example.practice5.model.entity.BoardEntity;
 import lombok.AllArgsConstructor;
@@ -21,6 +20,7 @@ public class BoardDto {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Builder .Default
     private List<CommentDto> commentDtos = new ArrayList<>();
 
     // 등록
@@ -34,6 +34,7 @@ public class BoardDto {
     // 출력
     public static BoardDto from(BoardEntity boardEntity){
         return BoardDto.builder()
+        .boardId(boardEntity.getBoardId())
         .author(boardEntity.getAuthor())
         .content(boardEntity.getContent())
         .createdAt(boardEntity.getCreatedAt())

@@ -23,9 +23,9 @@ public class CommentController {
     }
 
     // 댓글 삭제
-    @DeleteMapping ("/comments")
+    @DeleteMapping ("//{comment_id}/{password}")
     public boolean 댓글삭제(
-        @PathVariable (name = "commentId") Integer commentId,
+        @PathVariable (name = "comment_id") Integer commentId,
         @PathVariable (name = "password") String password
         ){
             return commentService.댓글삭제(commentId,password);

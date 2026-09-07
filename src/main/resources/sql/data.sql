@@ -66,8 +66,6 @@ VALUES
 (10015, 15, '2026-08-19');
 
 
-
-
 INSERT INTO blood
 (blood_pack_id, blood_type, donation_id, expiration_date, 
  received_date, shipment_date, status) 

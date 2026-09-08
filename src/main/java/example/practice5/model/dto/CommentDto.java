@@ -8,8 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder @Data 
-@AllArgsConstructor @NoArgsConstructor 
+@Data @Builder @AllArgsConstructor @NoArgsConstructor
 public class CommentDto {
     private Integer id;
     private String author;
@@ -17,9 +16,9 @@ public class CommentDto {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    // +FK
     private Integer boardId;
-
+   
+    
     public CommentEntity toEntity(){
         return CommentEntity.builder()
         .author(this.author)
@@ -27,6 +26,7 @@ public class CommentDto {
         .content(this.content)
         .build();
     }
+
     public static CommentDto from(CommentEntity commentEntity){
         return CommentDto.builder()
         .id(commentEntity.getId())
@@ -35,6 +35,7 @@ public class CommentDto {
         .content(commentEntity.getContent())
         .createdAt(commentEntity.getCreatedAt())
         .updatedAt(commentEntity.getUpdatedAt())
+        .boardId(commentEntity.getBoardEntity().getId())
         .build();
     }
 }

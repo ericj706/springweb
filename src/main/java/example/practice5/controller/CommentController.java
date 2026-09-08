@@ -11,23 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 import example.practice5.model.dto.CommentDto;
 import example.practice5.service.CommentService;
 
+
 @RestController 
 @RequestMapping ("/api/board/comments")
 public class CommentController {
     @Autowired private CommentService commentService;
 
-    // 댓글 등록
+    // 등록
     @PostMapping ("")
     public boolean 댓글등록(@RequestBody CommentDto commentDto){
         return commentService.댓글등록(commentDto);
     }
-
-    // 댓글 삭제
+    // 삭제
     @DeleteMapping ("")
     public boolean 댓글삭제(
-        @RequestParam  (name = "id") Integer id,
-        @RequestParam  (name = "password") String password
-        ){
-            return commentService.댓글삭제(id,password);
-        }   
+        @RequestParam  (name = "commentId") Integer commentId,
+        @RequestParam (name = "password") String password
+    ){ return commentService.댓글삭제(commentId, password); }
 }

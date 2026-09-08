@@ -1,5 +1,6 @@
 package example.practice5.model.entity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,19 +17,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity
-@Table( name = "board")
-@NoArgsConstructor@AllArgsConstructor@Builder@Data
-public class BoardEntity extends BaseTime {
+@Entity @Data @Builder 
+@AllArgsConstructor @NoArgsConstructor 
+@Table (name = "board")
+public class BoardEntity extends BaseTime{
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String author;
     private String password;
     private String content;
-    // 양방향
-    @OneToMany( mappedBy = "boardEntity" , cascade = CascadeType.ALL ) // 1:M , 자바에서 매핑할 FK멤버변수명
-    @ToString.Exclude 
-    @Builder.Default
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    
+    @OneToMany (mappedBy = "boardEntity", cascade = CascadeType.ALL)
+    @ToString .Exclude
+    @Builder .Default
     private List<CommentEntity> commentEntities = new ArrayList<>();
+
 }

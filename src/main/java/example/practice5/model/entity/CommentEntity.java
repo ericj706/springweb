@@ -1,5 +1,7 @@
 package example.practice5.model.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,20 +13,24 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-
-@Entity
-@Table( name="comment")
-@NoArgsConstructor@AllArgsConstructor@Builder@Data
-public class CommentEntity extends BaseTime {
+@Entity @Data @Builder 
+@AllArgsConstructor @NoArgsConstructor 
+@Table (name = "comment")
+public class CommentEntity extends BaseTime{
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String author;
     private String password;
     private String content;
-    // FK란? 다른 테이블(엔티티) 참조
-    @ManyToOne // M:1
-    @JoinColumn( name = "board_id")
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    
+    @ManyToOne 
+    @JoinColumn (name = "board_id")
     private BoardEntity boardEntity;
+
+    
 }

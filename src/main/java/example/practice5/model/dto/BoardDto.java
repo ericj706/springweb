@@ -10,35 +10,34 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor@AllArgsConstructor@Data@Builder
+@Data @Builder @AllArgsConstructor @NoArgsConstructor 
 public class BoardDto {
     private Integer id;
     private String author;
     private String password;
     private String content;
-    // + BASETIME
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    // + 달린 댓글들
-    @Builder.Default
+    @Builder .Default
     private List<CommentDto> comments = new ArrayList<>();
-    // 
+
     public BoardEntity toEntity(){
         return BoardEntity.builder()
-            .content( this.content )
-            .author( this.author )
-            .password( this.password )
-            .build();
+        .author(this.author)
+        .password(this.password)
+        .content(this.content)
+        .build();
+    
     }
-    // 
-    public static BoardDto from( BoardEntity boardEntity ){
+
+    public static BoardDto from(BoardEntity boardEntity){
         return BoardDto.builder()
-                .id( boardEntity.getId() )
-                .author( boardEntity.getAuthor() )
-                .password( boardEntity.getPassword() )
-                .content( boardEntity.getContent() )
-                .createdAt( boardEntity.getCreatedAt() )
-                .updatedAt( boardEntity.getUpdatedAt() )
-                .build();
+        .id(boardEntity.getId())
+        .author(boardEntity.getAuthor())
+        .password(boardEntity.getPassword())
+        .content(boardEntity.getContent())
+        .createdAt(boardEntity.getCreatedAt())
+        .updatedAt(boardEntity.getUpdatedAt())
+        .build();
     }
 }

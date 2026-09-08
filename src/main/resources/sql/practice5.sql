@@ -1,4 +1,3 @@
--- 1. 게시글(Board) 샘플 데이터 등록
 INSERT INTO board (author, password, content, created_at, updated_at)
 VALUES ('유재석', '1234', '안녕하세요! 첫 번째 게시글입니다. 반갑습니다.', NOW(), NOW());
 INSERT INTO board (author, password, content, created_at, updated_at)

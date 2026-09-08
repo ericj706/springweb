@@ -9,32 +9,31 @@ import example.practice5.model.entity.CommentEntity;
 import example.practice5.model.repository.BoardRepository;
 import example.practice5.model.repository.CommentRepository;
 
-
 @Service 
 public class CommentService {
     @Autowired private CommentRepository commentRepository;
     @Autowired private BoardRepository boardRepository;
 
-    // 1. 댓글 등록 : FK 값 --> FK 엔티티 로 변경
-    public boolean 댓글등록( CommentDto commentDto ){
-        CommentEntity commentEntity = commentDto.toEntity();
-        // ** boardId --> boardEntity 변경
-        BoardEntity boardEntity = boardRepository.findById( commentDto.getBoardId() ).orElse(null);
-        commentEntity.setBoardEntity( boardEntity ); // ** comment에 FK 엔티티 넣어주기
-        CommentEntity savedEntity = commentRepository.save( commentEntity );
-        if( savedEntity.getId() >= 1 ) return true;
-        return false;
-    }
-    
-    // 2. 댓글 삭제 :
-    public boolean 댓글삭제( Integer commentId , String password ){
-        CommentEntity commentEntity = commentRepository.findById(commentId).orElse( null );
-        if( commentEntity != null ){
-            if( commentEntity.getPassword().equals( password ) ){
-                commentRepository.deleteById(commentId);
-                return true;
-            }
+    // 댓글등록
+    public boolean 댓글등록(CommentDto commentDto){
+        CommentEntity commentEntity = commentDto.toEntity();    // dto -> entity
+        //boardId
+        BoardEntity boardEntity = boardRepository.findById(commentDto.getBoardId()).orElse(null);
+        commentEntity.setBoardEntity(boardEntity);
+        CommentEntity savedEntity = commentRepository.save(commentEntity);
+        if (savedEntity.getId() >= 1) {
+            return true;
         }
         return false;
+    }
+    // 댓글삭제
+    public boolean 댓글삭제(Integer id, String password){
+        BoardEntity boardEntity = boardRepository.findById(id).orElse(null);
+        if (boardEntity != null) {
+            if (boardEntity.getPassword().equals(password)) {
+                boardRepository.deleteById(id);
+                return true;
+            }
+        }return false;
     }
 }

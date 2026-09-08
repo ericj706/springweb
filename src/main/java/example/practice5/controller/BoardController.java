@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import example.practice5.model.dto.BoardDto;
@@ -30,10 +30,10 @@ public class BoardController {
     }
 
     // 게시글 삭제
-    @DeleteMapping ("/{board_id}/{password}")
+    @DeleteMapping ("")
     public boolean 게시글삭제(
-        @PathVariable (name = "board_id") Integer boardId,
-        @PathVariable (name = "password") String password
+        @RequestParam  (name = "board_id") Integer boardId,
+        @RequestParam (name = "password") String password
     ){
         return boardService.게시글삭제(boardId,password);
     }

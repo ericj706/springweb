@@ -12,7 +12,7 @@ import lombok.Setter;
 @Builder @Getter @Setter 
 @AllArgsConstructor @NoArgsConstructor 
 public class CommentDto {
-    private Integer commentId;
+    private Integer id;
     private String author;
     private String password;
     private String content;
@@ -29,7 +29,7 @@ public class CommentDto {
     }
     public static CommentDto from(CommentEntity commentEntity){
         return CommentDto.builder()
-        .commentId(commentEntity.getCommentId())
+        .id(commentEntity.getId())
         .author(commentEntity.getAuthor())
         .content(commentEntity.getContent())
         .createdAt(commentEntity.getCreatedAt())

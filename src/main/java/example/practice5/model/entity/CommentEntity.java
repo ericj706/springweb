@@ -1,6 +1,5 @@
 package example.practice5.model.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,25 +9,22 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Entity 
-@Table (name = "comment")
-@Builder @Getter @Setter  @AllArgsConstructor @NoArgsConstructor 
-public class CommentEntity extends BaseTime{
-    @Id 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer commentId;
-    @Column (length = 10, nullable = false)
+
+@Entity
+@Table( name="comment")
+@NoArgsConstructor@AllArgsConstructor@Builder@Data
+public class CommentEntity extends BaseTime {
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    private Integer id;
     private String author;
-    @Column (length = 50, nullable = false)
     private String password;
-    @Column (length = 100,nullable = false)
     private String content;
-
-    @JoinColumn(name = "board_id")
-    @ManyToOne 
+    // FK란? 다른 테이블(엔티티) 참조
+    @ManyToOne // M:1
+    @JoinColumn( name = "board_id")
     private BoardEntity boardEntity;
 }

@@ -14,7 +14,7 @@ import lombok.Setter;
 @Builder @Getter @Setter 
 @AllArgsConstructor @NoArgsConstructor 
 public class BoardDto {
-    private Integer boardId;
+    private Integer id;
     private String author;
     private String password;
     private String content;
@@ -34,7 +34,7 @@ public class BoardDto {
     // 출력
     public static BoardDto from(BoardEntity boardEntity){
         return BoardDto.builder()
-        .boardId(boardEntity.getBoardId())
+        .id(boardEntity.getId())
         .author(boardEntity.getAuthor())
         .content(boardEntity.getContent())
         .createdAt(boardEntity.getCreatedAt())

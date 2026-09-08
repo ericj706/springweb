@@ -5,11 +5,10 @@ import java.time.LocalDateTime;
 import example.practice5.model.entity.CommentEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Builder @Getter @Setter 
+@Builder @Data 
 @AllArgsConstructor @NoArgsConstructor 
 public class CommentDto {
     private Integer id;
@@ -18,6 +17,7 @@ public class CommentDto {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    // +FK
     private Integer boardId;
 
     public CommentEntity toEntity(){
@@ -31,6 +31,7 @@ public class CommentDto {
         return CommentDto.builder()
         .id(commentEntity.getId())
         .author(commentEntity.getAuthor())
+        .password(commentEntity.getPassword())
         .content(commentEntity.getContent())
         .createdAt(commentEntity.getCreatedAt())
         .updatedAt(commentEntity.getUpdatedAt())

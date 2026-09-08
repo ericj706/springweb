@@ -32,9 +32,9 @@ public class BoardController {
     // 게시글 삭제
     @DeleteMapping ("")
     public boolean 게시글삭제(
-        @RequestParam  (name = "board_id") Integer boardId,
+        @RequestParam  (name = "id") Integer id,
         @RequestParam (name = "password") String password
     ){
-        return boardService.게시글삭제(boardId,password);
+        return boardService.게시글삭제(id,password);
     }
 }

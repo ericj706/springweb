@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import example.practice5.model.entity.BoardEntity;
 
-
 @Repository 
 public interface BoardRepository extends JpaRepository<BoardEntity,Integer> {
 

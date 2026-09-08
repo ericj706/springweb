@@ -12,24 +12,22 @@ import example.practice5.model.dto.CommentDto;
 import example.practice5.service.CommentService;
 
 @RestController 
-@RequestMapping ("/api/board")
+@RequestMapping ("/api/board/comments")
 public class CommentController {
     @Autowired private CommentService commentService;
 
     // 댓글 등록
-    @PostMapping ("/comments")
+    @PostMapping ("")
     public boolean 댓글등록(@RequestBody CommentDto commentDto){
         return commentService.댓글등록(commentDto);
     }
 
     // 댓글 삭제
-    @DeleteMapping ("/comments")
+    @DeleteMapping ("")
     public boolean 댓글삭제(
-        @RequestParam  (name = "comment_id") Integer commentId,
+        @RequestParam  (name = "id") Integer id,
         @RequestParam  (name = "password") String password
         ){
-            return commentService.댓글삭제(commentId,password);
-        }
-    
-
+            return commentService.댓글삭제(id,password);
+        }   
 }

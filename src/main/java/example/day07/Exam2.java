@@ -5,8 +5,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-import org.aspectj.apache.bcel.classfile.InnerClass;
-
 public class Exam2 {
     public static void main(String[] args) {
         // 1. 구현체: 추상메소드(인터페이스) 구현한 객체
@@ -41,7 +39,7 @@ public class Exam2 {
     }
 }
 
-class Calculator{
-
+interface Calculator {
+    int plus(int x, int y);
 
 }

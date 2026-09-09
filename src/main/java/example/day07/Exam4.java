@@ -1,0 +1,45 @@
+package example.day07;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+
+public class Exam4 {
+    public static void main(String[] args) {
+        // 메소드 레퍼런스: 람다식이 단순히 기존메소드만 호출하는 경우 간결하게 표현하는 방법
+        // 1. 
+        // Integer.parseInt("문자");    // 문자 --> 정수 변환 함수
+        Function<String, Integer> function1 = (x) -> {return Integer.parseInt(x);};
+        Function<String, Integer> function2 = Integer::parseInt;
+        System.out.println(function1.apply("10"));  // "10"-> 10
+        // 2. 
+        List<String> names = List.of("유재석","강호동","신동엽","서장훈");
+
+        // 4. names 리스트내 문자열/이름들을 각각 대입하여 Student 객체 만드세요.
+            // 전통방식
+            List<Student> list1 = new ArrayList<>();
+            for (int i = 0; i < names.size(); i++) {
+                Student student = new Student(names.get(i));
+                list1.add(student);
+            }
+            // 스트링API
+            List<Student> list2 = names.stream().map((name)->{return new Student(name);}).toList();
+            // 메소드참조(레퍼런스)
+            List<Student> list3 = names.stream().map(Student::new).toList();
+            /*
+                유형
+                1. 클래스명::static메소드명
+                2. 인스턴스명::메소드명
+                3. 클래스명::new
+
+                JPA 서비스 구조 : entity --> dto 변환
+                List<MemberDto> list = entityList.stream().map((entity)->{return MemberDto.from(entity);}).toList();
+            */
+    }   
+}
+
+class Student{
+    private String name;
+    public Student(String name){this.name = name;}
+
+}

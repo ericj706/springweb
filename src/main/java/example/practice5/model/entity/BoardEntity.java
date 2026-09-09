@@ -27,8 +27,7 @@ public class BoardEntity extends BaseTime{
     private String author;
     private String password;
     private String content;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+   
     
     @OneToMany (mappedBy = "boardEntity", cascade = CascadeType.ALL)
     @ToString .Exclude

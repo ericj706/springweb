@@ -13,7 +13,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity @Data @Builder 
 @AllArgsConstructor @NoArgsConstructor 
@@ -25,11 +24,9 @@ public class CommentEntity extends BaseTime{
     private String author;
     private String password;
     private String content;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    
-    @ManyToOne 
+
     @JoinColumn (name = "board_id")
+    @ManyToOne
     private BoardEntity boardEntity;
 
     

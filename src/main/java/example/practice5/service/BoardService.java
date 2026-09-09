@@ -30,8 +30,10 @@ public class BoardService {
 
         boardEntities.forEach((boardEntity)->{
             BoardDto boardDto = BoardDto.from(boardEntity);
+            // 댓글목록도 조회
             boardEntity.getCommentEntities().forEach((commentEntity)->{
                 CommentDto commentDto = CommentDto.from(commentEntity);
+                // boardDto에 commentDto 추가
                 boardDto.getComments().add(commentDto);
             });
             boardDtos.add(boardDto);

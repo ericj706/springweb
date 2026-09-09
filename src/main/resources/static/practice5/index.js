@@ -4,7 +4,7 @@ const openCommentSet = new Set();
 // 1. 게시글 목록 조회 및 피드 렌더링 (GET /api/board)
 async function getPosts() {
     try {
-        const res = await axios.get('https://solved-likelihood-singles-intense.trycloudflare.com/api/board');
+        const res = await axios.get('/api/board');
         const feedContainer = document.querySelector('.feed-container');
         feedContainer.innerHTML = '';
 
@@ -92,7 +92,7 @@ async function writePost() {
     };
 
     try {
-        await axios.post('https://solved-likelihood-singles-intense.trycloudflare.com/api/board', payload);
+        await axios.post('/api/board', payload);
         document.querySelector('.input-post-author').value = '';
         document.querySelector('.input-post-password').value = '';
         document.querySelector('.input-post-content').value = '';
@@ -107,7 +107,7 @@ async function writePost() {
 async function removePost(id) {
     const password = prompt('비밀번호를 입력하세요:');
     try {
-        await axios.delete('https://solved-likelihood-singles-intense.trycloudflare.com/api/board', {
+        await axios.delete('/api/board', {
             params: { id, password }
         });
         await getPosts();
@@ -127,7 +127,7 @@ async function addComment(boardId, btn) {
     };
 
     try {
-        await axios.post('https://solved-likelihood-singles-intense.trycloudflare.com/api/board/comments', payload);
+        await axios.post('/api/board/comments', payload);
         openCommentSet.add(boardId);
         await getPosts();
     } catch (err) {
@@ -139,7 +139,7 @@ async function addComment(boardId, btn) {
 async function removeComment(boardId, commentId) {
     const password = prompt('비밀번호를 입력하세요:');
     try {
-        await axios.delete('https://solved-likelihood-singles-intense.trycloudflare.com/api/board/comments', {
+        await axios.delete('/api/board/comments', {
             params: { commentId, password }
         });
         openCommentSet.add(boardId);

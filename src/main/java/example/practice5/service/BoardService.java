@@ -11,6 +11,7 @@ import example.practice5.model.dto.CommentDto;
 import example.practice5.model.entity.BoardEntity;
 import example.practice5.model.repository.BoardRepository;
 
+
 @Service 
 public class BoardService {
     @Autowired private BoardRepository boardRepository;
@@ -23,27 +24,27 @@ public class BoardService {
             return true;
         }return false;
     }
+
     // 조회
     public List<BoardDto> 게시물조회(){
         List<BoardEntity> boardEntities = boardRepository.findAll();
         List<BoardDto> boardDtos = new ArrayList<>();
-
         boardEntities.forEach((boardEntity)->{
             BoardDto boardDto = BoardDto.from(boardEntity);
-            // 댓글목록도 조회
             boardEntity.getCommentEntities().forEach((commentEntity)->{
+                // entity-> Dto
                 CommentDto commentDto = CommentDto.from(commentEntity);
-                // boardDto에 commentDto 추가
                 boardDto.getComments().add(commentDto);
             });
             boardDtos.add(boardDto);
         });
         return boardDtos;
     }
-    // 식제
+
+    // 삭제
     public boolean 게시물삭제(Integer id, String password){
         BoardEntity boardEntity = boardRepository.findById(id).orElse(null);
-        if (boardEntity != null) {
+        if (boardEntity!=null) {
             if (boardEntity.getPassword().equals(password)) {
                 boardRepository.deleteById(id);
                 return true;

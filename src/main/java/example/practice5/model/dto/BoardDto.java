@@ -10,7 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @Builder @AllArgsConstructor @NoArgsConstructor 
+@Data @Builder 
+@AllArgsConstructor @NoArgsConstructor
 public class BoardDto {
     private Integer id;
     private String author;
@@ -27,7 +28,6 @@ public class BoardDto {
         .password(this.password)
         .content(this.content)
         .build();
-    
     }
 
     public static BoardDto from(BoardEntity boardEntity){
@@ -35,9 +35,10 @@ public class BoardDto {
         .id(boardEntity.getId())
         .author(boardEntity.getAuthor())
         .password(boardEntity.getPassword())
-        .content(boardEntity.getContent())
+        .content(boardEntity.getPassword())
         .createdAt(boardEntity.getCreatedAt())
         .updatedAt(boardEntity.getUpdatedAt())
         .build();
     }
+
 }

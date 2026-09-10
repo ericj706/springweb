@@ -16,16 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor @NoArgsConstructor 
 @Table (name = "comment")
 public class CommentEntity extends BaseTime{
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String author;
     private String password;
     private String content;
 
+    @ManyToOne 
     @JoinColumn (name = "board_id")
-    @ManyToOne
     private BoardEntity boardEntity;
-
-    
 }

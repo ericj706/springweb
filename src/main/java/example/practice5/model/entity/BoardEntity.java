@@ -17,20 +17,17 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity @Data @Builder 
-@AllArgsConstructor @NoArgsConstructor 
+@NoArgsConstructor @AllArgsConstructor 
 @Table (name = "board")
 public class BoardEntity extends BaseTime{
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String author;
     private String password;
     private String content;
-   
     
     @OneToMany (mappedBy = "boardEntity", cascade = CascadeType.ALL)
     @ToString .Exclude
     @Builder .Default
     private List<CommentEntity> commentEntities = new ArrayList<>();
-
 }

@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import example.practice5.model.dto.BoardDto;
-import example.practice5.model.entity.BoardEntity;
 import example.practice5.service.BoardService;
 
-@RestController 
-@RequestMapping ("/api/board")
+@RestController @RequestMapping ("/api/board")
 public class BoardController {
     @Autowired private BoardService boardService;
+
     // 등록
     @PostMapping ("")
-    public boolean 게시물등록(@RequestBody BoardDto BoardDto){
-        return boardService.게시물등록(BoardDto);
+    public boolean 게시물등록(@RequestBody BoardDto boardDto){
+        return boardService.게시물등록(boardDto);
     }
+
     // 조회
     @GetMapping ("")
     public List<BoardDto> 게시물조회(){
@@ -35,5 +35,4 @@ public class BoardController {
         @RequestParam (name = "id") Integer id,
         @RequestParam (name = "password") String password
     ){ return boardService.게시물삭제(id, password); }
-
 }
